@@ -1,6 +1,5 @@
 package com.cicdlectures.menuserver.service;
 
-import java.util.List;
 import java.util.HashSet;
 import java.util.Arrays;
 
@@ -54,6 +53,10 @@ public class CreateMenuServiceTests {
     ArgumentCaptor<Menu> savedMenu = ArgumentCaptor.forClass(Menu.class);
 
     verify(menuRepository, times(1)).save(savedMenu.capture());
+    
+    assertEquals(savedMenu.getValue().getName(), newMenu.getName());
+    
+    assertEquals(MenuDto.fromModel(returnedMenu).getName(), got.getName());
   }
 
   @Test

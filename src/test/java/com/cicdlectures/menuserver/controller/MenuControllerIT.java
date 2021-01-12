@@ -1,16 +1,12 @@
 package com.cicdlectures.menuserver.controller;
 
-import static org.assertj.core.api.Assertions.*;
-
 import java.net.URL;
 import java.util.List;
 import java.util.HashSet;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.DisplayName;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,11 +19,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.MediaType;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.cicdlectures.menuserver.repository.DishRepository;
 import com.cicdlectures.menuserver.repository.MenuRepository;
 import com.cicdlectures.menuserver.model.Dish;
 import com.cicdlectures.menuserver.model.Menu;
@@ -45,9 +39,6 @@ public class MenuControllerIT {
 
   @Autowired
   private MenuRepository menuRepository;
-
-  @Autowired
-  private DishRepository dishRepository;
 
   @Autowired
   private TestRestTemplate template;
