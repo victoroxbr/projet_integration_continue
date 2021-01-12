@@ -81,7 +81,7 @@ public class MenuControllerIT {
 
     MenuDto[] gotMenus = response.getBody();
 
-    assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+    assertEquals(HttpStatus.OK, response.getStatusCode());
     assertArrayEquals(wantMenus, gotMenus);
   }
 
@@ -99,8 +99,7 @@ public class MenuControllerIT {
     HttpEntity<MenuDto> request = new HttpEntity<>(newMenu, headers);
 
     ResponseEntity<MenuDto> response = this.template.postForEntity(url.toString(), request, MenuDto.class);
-
-    // LOOOOOOL. This is fine.
-    assertTrue(false);
+    
+    assertEquals(wantMenu, response.getBody());
   }
 }
