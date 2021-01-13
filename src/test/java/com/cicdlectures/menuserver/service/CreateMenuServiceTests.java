@@ -1,6 +1,5 @@
 package com.cicdlectures.menuserver.service;
 
-import java.util.List;
 import java.util.HashSet;
 import java.util.Arrays;
 
@@ -54,11 +53,10 @@ public class CreateMenuServiceTests {
     ArgumentCaptor<Menu> savedMenu = ArgumentCaptor.forClass(Menu.class);
 
     verify(menuRepository, times(1)).save(savedMenu.capture());
-
-    // TODO: I'll write asserts later lol. Tests are useless anyway, nobody runs them.
-    // It's mostly the same thing than the next test.
-    // PROVE ME WRONG.
-    assertTrue(false);
+    
+    assertEquals(savedMenu.getValue().getName(), newMenu.getName());
+    
+    assertEquals(MenuDto.fromModel(returnedMenu).getName(), got.getName());
   }
 
   @Test
@@ -78,11 +76,11 @@ public class CreateMenuServiceTests {
 
     ArgumentCaptor<Menu> savedMenu = ArgumentCaptor.forClass(Menu.class);
 
-    verify(menuRepository, times(2)).save(savedMenu.capture());
+    verify(menuRepository, times(1)).save(savedMenu.capture());
 
     assertEquals(savedMenu.getValue().getName(), newMenu.getName());
     assertTrue(savedMenu.getValue().getDishes().contains(existingDish));
 
-    assertEquals(MenuDto.fromModel(returnedMenu), got);
+    assertEquals(MenuDto.fromModel(returnedMenu).getName(), got.getName());
   }
 }
